@@ -12,55 +12,58 @@
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+       crossorigin=""/>
 </head>
 
 <body>
 
 <p>Test</p>
 
-<div id="map" style="width: 600px; height: 400px;"></div>
+<div id="map" style="width: 1000px; height: 600px;"></div>
 
 </body>
 
-
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 <script th:inline="javascript">
 /*<![CDATA[*/
 
-    var attribution = new ol.control.Attribution({
-    collapsible: false
-    });
 
-    var map = new ol.Map({
-    controls: ol.control.defaults({attribution: false}).extend([attribution]),
-    layers: [
-    new ol.layer.Tile({
-    source: new ol.source.OSM({
-    url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
-    attributions: [ ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
-    maxZoom: 18
-    })
-    })
-    ],
-    target: 'map',
-    view: new ol.View({
-    center: ol.proj.fromLonLat([4.35247, 50.84673]),
-    maxZoom: 18,
-    zoom: 12
-    })
-    });
+    $( document ).ready(function() {
 
 
-    $(document).ready(function() {
 
 
-        var message = /*[[${list}]]*/ 'default';
-            console.log(message);
+    var mymap = L.map('map').setView([50.633 , 3.066], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiZmFiYWFkYWRhZCIsImEiOiJja2ZhMjR2ZG4wcncxMnVvODQ3d3N1bnRnIn0.21lhMogKZobEJhyKD5tRJQ'
+    }).addTo(mymap);
 
 
-    });
+    	var data = /*[[${list}]]*/ 'default';
+           // console.log(data);
+            //console.log(JSON.parse(data));
+            var dataParsed = JSON.parse(data);
 
+            var marker = L.marker([50.633 , 3.066]).addTo(mymap);
+    		for(let i = 0; i < dataParsed.length; i++){
 
+                var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]).addTo(mymap);
+
+                    console.log(' x ' + dataParsed[i].xlongitude.slice(0, 6) + ' y '  + dataParsed[i].ylatitude.slice(0, 6));
+
+            }
+
+           console.log( "ready!" );
+        });
 
 /*]]>*/
 </script>
