@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
        crossorigin=""/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+
 </head>
 
 <body>
@@ -28,6 +32,10 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
 <script th:inline="javascript">
 /*<![CDATA[*/
 
@@ -53,10 +61,15 @@
             //console.log(JSON.parse(data));
             var dataParsed = JSON.parse(data);
 
-            var marker = L.marker([50.633 , 3.066]).addTo(mymap);
-    		for(let i = 0; i < dataParsed.length; i++){
+            var marker = L.marker([50.633 , 3.066])
+            marker.bindTooltip("my tooltip text").openTooltip();
+            marker.addTo(mymap);
 
-                var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]).addTo(mymap);
+    		for(let i = 0; i < dataParsed.length; i++){
+    		console.log(dataParsed[i]);
+                var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
+                marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
+                marker.addTo(mymap);
 
                     console.log(' x ' + dataParsed[i].xlongitude.slice(0, 6) + ' y '  + dataParsed[i].ylatitude.slice(0, 6));
 
