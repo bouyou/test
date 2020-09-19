@@ -28,9 +28,6 @@ public class BorneController {
 
         List<Borne> list = this.borneRepository.findAll();
 
-
-
-
         return this.borneRepository.findAll();
     }
 
