@@ -28,12 +28,14 @@ public class BorneController {
     }
 
 
+    @ModelAttribute
     @GetMapping("/map")
-    public List<Borne> show() {
+    public String map(Model model) throws JsonProcessingException {
 
-        List<Borne> list = this.borneRepository.findAll();
-
-        return this.borneRepository.findAll();
+        ObjectMapper mapper = new ObjectMapper();
+        String list = mapper.writeValueAsString(this.borneRepository.findAll());
+        model.addAttribute("list", list);
+        return "map";
     }
 
     @ModelAttribute
