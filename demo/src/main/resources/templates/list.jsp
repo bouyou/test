@@ -13,20 +13,28 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="/css/paginate.css"/>
-      <link rel="stylesheet" href="/css/ligne.css"/>
-       <link rel="stylesheet" href="/css/style.css"/>
+     <link rel="stylesheet" href="/css/paginate.css"/>
+     <link rel="stylesheet" href="/css/ligne.css"/>
+     <link rel="stylesheet" href="/css/style.css"/>
 </head>
-
 <body>
-
 <h1>Liste des bornes</h1>
 
 <div class="input-group">
-    <label for="searchBox">Filtre</label>
+    <label for="searchBox" class="filter">Rechercher</label>
     <input type="search" id="searchBox" placeholder="...">
 </div>
-<table class="map table hover table-dark">
+<table class="map table hover table-dark tablePosition">
+<thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Operateur</th>
+      <th scope="col">Aménageur</th>
+      <th scope="col">Code Insee</th>
+      <th scope="col">Type prise</th>
+      <th scope="col">Acces recharge</th>
+    </tr>
+  </thead>
     <tr scope="row" data-th-each="borne : ${list}">
         <td><span><a th:href="@{/show(id=${borne.id})}">
                 <svg width="1em" height="1.0625em" viewBox="0 0 16 17" class="bi bi-compass" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +45,6 @@
         </td>
         <td data-th-text="${borne.operateur}"></td>
         <td data-th-text="${borne.amenageur}">...</td>
-        <td data-th-text="${borne.operateur}">...</td>
         <td data-th-text="${borne.codeinsee}">...</td>
         <td data-th-text="${borne.typeprise}">...</td>
         <td data-th-text="${borne.accesrecharge}">...</td>
@@ -45,13 +52,13 @@
 </table>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/paginate.min.js"></script>
+<script src="/js/paginate.min.js" style="position: center;"></script>
 <script th:inline="javascript">
 /*<![CDATA[*/
 
     $( document ).ready(function() {
     let options = {
-        numberPerPage:30,
+        numberPerPage:3,
         goBar:true,
         pageCounter:true,
     };
