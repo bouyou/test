@@ -17,10 +17,11 @@
        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
        crossorigin=""/>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
-<body>
-<h1>Show</h1>
+<body class="bodyMap">
+<h1>Votre borne</h1>
 
 <div id="map" style="width: auto; height: 600px;"></div>
 
