@@ -67,33 +67,21 @@
       });
     }
 
-
-
-
-
     var data = /*[[${list}]]*/ 'default';
 
         var dataParsed = JSON.parse(data);
 
-
         for(let i = 0; i < dataParsed.length; i++){
+
             var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
             marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
             marker.addTo(mymap);
 
         }
 
-
-
         function locateUser() {
             this.map.locate({setView : true});
         }
-
-        $('#actions').find('a').on('click', function() {
-           locateUser();
-        });
-
-
     });
 
 /*]]>*/
