@@ -17,7 +17,9 @@
      <link rel="stylesheet" href="/css/ligne.css"/>
      <link rel="stylesheet" href="/css/style.css"/>
 </head>
+
 <body>
+
 <h1>Liste des bornes</h1>
 
 <div class="input-group">
@@ -45,6 +47,7 @@
         </td>
         <td data-th-text="${borne.operateur}"></td>
         <td data-th-text="${borne.amenageur}">...</td>
+        <td data-th-text="${borne.operateur}">...</td>
         <td data-th-text="${borne.codeinsee}">...</td>
         <td data-th-text="${borne.typeprise}">...</td>
         <td data-th-text="${borne.accesrecharge}">...</td>
@@ -52,13 +55,13 @@
 </table>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/paginate.min.js" style="position: center;"></script>
+<script src="/js/paginate.min.js"></script>
 <script th:inline="javascript">
 /*<![CDATA[*/
 
     $( document ).ready(function() {
     let options = {
-        numberPerPage:3,
+        numberPerPage:30,
         goBar:true,
         pageCounter:true,
     };
