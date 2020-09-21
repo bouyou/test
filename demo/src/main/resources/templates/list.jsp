@@ -27,6 +27,16 @@
     <input type="search" id="searchBox" placeholder="...">
 </div>
 <table class="map table hover table-dark">
+<thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Operateur</th>
+      <th scope="col">Amenageur</th>
+      <th scope="col">Code Insee</th>
+      <th scope="col">Type prise</th>
+      <th scope="col">Acces recharge</th>
+    </tr>
+  </thead>
     <tr scope="row" data-th-each="borne : ${list}">
         <td><span><a th:href="@{/show(id=${borne.id})}">
                 <svg width="1em" height="1.0625em" viewBox="0 0 16 17" class="bi bi-compass" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
