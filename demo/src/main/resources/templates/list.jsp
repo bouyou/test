@@ -20,7 +20,6 @@
 <body>
 
 <p>List</p>
-
 </body>
 <div class="input-group">
     <label for="searchBox">Filtre</label>
@@ -28,7 +27,9 @@
 </div>
 <table class="map table hover">
     <tr data-th-each="borne : ${list}">
-        <td data-th-text="${borne.operateur}">...</td>
+
+        <td><span><a th:href="@{/show(id=${borne.id})}">Show</span></td>
+        <td data-th-text="${borne.operateur}"></td>
         <td data-th-text="${borne.amenageur}">...</td>
         <td data-th-text="${borne.operateur}">...</td>
         <td data-th-text="${borne.codeinsee}">...</td>
@@ -43,7 +44,6 @@
 /*<![CDATA[*/
 
     $( document ).ready(function() {
-
     let options = {
         numberPerPage:2,
         goBar:true,
@@ -53,10 +53,7 @@
     let filterOptions = {
         el:'#searchBox'
     };
-
     paginate.init('.map',options,filterOptions);
-
-
      });
 /*]]>*/
 </script>
