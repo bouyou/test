@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<h1>>Map</h1>
+<h1>Map</h1>
 
 <div id="map" style="width: auto; height: 600px;"></div>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"

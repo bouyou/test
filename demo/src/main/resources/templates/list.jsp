@@ -26,7 +26,7 @@
     <input type="search" id="searchBox" placeholder="Filtre...">
 </div>
 <table class="map table hover table-dark">
-    <tr data-th-each="borne : ${list}">
+    <tr scope="row" data-th-each="borne : ${list}">
 
         <td><span><a th:href="@{/show(id=${borne.id})}">Show</span></td>
         <td data-th-text="${borne.operateur}"></td>
@@ -45,7 +45,7 @@
 
     $( document ).ready(function() {
     let options = {
-        numberPerPage:2,
+        numberPerPage:30,
         goBar:true,
         pageCounter:true,
     };
