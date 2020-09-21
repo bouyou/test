@@ -1,6 +1,4 @@
 package com.borne.controllers;
-
-
 import com.borne.entities.Borne;
 import com.borne.repositories.BorneRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 public class BorneController {
@@ -46,5 +43,18 @@ public class BorneController {
         model.addAttribute("list", this.borneRepository.findAll());
         return "list";
     }
+
+    @ModelAttribute
+    @GetMapping("/show")
+    public String show(Integer id, Model model) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        Optional<Borne> borne = this.borneRepository.findById(id);
+        String borneJson = mapper.writeValueAsString(borne.get());
+        model.addAttribute("borne", borneJson);
+        return "show";
+    }
+
+
 }
 
