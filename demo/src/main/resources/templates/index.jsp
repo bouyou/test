@@ -13,13 +13,11 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="/css/paginate.css"/>
-      <link rel="stylesheet" href="/css/ligne.css"/>
 </head>
 
 <body>
 
-<p>Index</p>
+<p>Index 1</p>
 </body>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
