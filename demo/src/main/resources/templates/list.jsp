@@ -19,13 +19,13 @@
 
 <body>
 
-<p>List</p>
-</body>
+<h1>>List</h1>
+
 <div class="input-group">
     <label for="searchBox">Filtre</label>
     <input type="search" id="searchBox" placeholder="Filtre...">
 </div>
-<table class="map table hover">
+<table class="map table hover table-dark">
     <tr data-th-each="borne : ${list}">
 
         <td><span><a th:href="@{/show(id=${borne.id})}">Show</span></td>
@@ -57,4 +57,5 @@
      });
 /*]]>*/
 </script>
+</body>
 </html>
