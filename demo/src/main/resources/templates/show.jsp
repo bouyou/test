@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Map</title>
+    <title>Show</title>
     <meta name="author" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<p>Map</p>
+<p>Show</p>
 
 <div id="map" style="width: auto; height: 600px;"></div>
 
@@ -34,37 +34,26 @@
 <script th:inline="javascript">
 /*<![CDATA[*/
 
-
     $( document ).ready(function() {
 
-    var mymap = L.map('map').setView([50.633 , 3.066], 13);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoiZmFiYWFkYWRhZCIsImEiOiJja2ZhMjR2ZG4wcncxMnVvODQ3d3N1bnRnIn0.21lhMogKZobEJhyKD5tRJQ'
-    }).addTo(mymap);
+        var data = /*[[${borne}]]*/ 'default';
 
+        var borne = JSON.parse(data);
+        var mymap = L.map('map').setView([borne.ylatitude, borne.xlongitude], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZmFiYWFkYWRhZCIsImEiOiJja2ZhMjR2ZG4wcncxMnVvODQ3d3N1bnRnIn0.21lhMogKZobEJhyKD5tRJQ'
+        }).addTo(mymap);
 
-    	var data = /*[[${list}]]*/ 'default';
-
-            var dataParsed = JSON.parse(data);
-            var marker = L.marker([50.633 , 3.066])
-            marker.bindTooltip("my tooltip text").openTooltip();
+            var marker = L.marker([borne.ylatitude, borne.xlongitude]);
+            marker.bindTooltip(borne.amenageur).openTooltip();
             marker.addTo(mymap);
-
-    		for(let i = 0; i < dataParsed.length; i++){
-    		console.log(dataParsed[i]);
-                var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
-                marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
-                marker.addTo(mymap);
-            }
         });
 
 /*]]>*/
 </script>
-
-
 </html>
