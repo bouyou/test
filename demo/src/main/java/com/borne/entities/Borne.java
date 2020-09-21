@@ -64,13 +64,13 @@ public class Borne implements Serializable {
     private String typeprise;
 
     @Column(name = "X")
-    private Integer x;
+    public Integer x;
 
     @Column(name = "Xlongitude")
     private String xlongitude;
 
     @Column(name = "Y")
-    private Integer y;
+    public Integer y;
 
     @Column(name = "Ylatitude")
     private String ylatitude;
