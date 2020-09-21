@@ -15,20 +15,41 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="/css/paginate.css"/>
       <link rel="stylesheet" href="/css/ligne.css"/>
+      <link rel="stylesheet" href="/css/style.css"/>
 </head>
-
+<style>
+body{
+background-color: #A9A9A9;
+}
+h1{
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+}
+table{
+background-color: black;
+table : table-dark;
+}
+.filtre{
+border: 1px solid #1D3268;
+border-radius: 10px;
+margin-left: 20px;
+margin-right: 20px;
+}
+.click{
+color : #1D3268;
+}
+</style>
 <body>
+<h1>Liste</h1>
 
-<p>List</p>
-</body>
 <div class="input-group">
-    <label for="searchBox">Filtre</label>
+    <label for="searchBox" class="filtre">Filtre</label>
     <input type="search" id="searchBox" placeholder="Filtre...">
 </div>
-<table class="map table hover">
+<table class="map table hover table table-dark">
     <tr data-th-each="borne : ${list}">
 
-        <td><span><a th:href="@{/show(id=${borne.id})}">Show</span></td>
+        <td><span><a th:href="@{/show(id=${borne.id})}" class="click">Voir</span></td>
         <td data-th-text="${borne.operateur}"></td>
         <td data-th-text="${borne.amenageur}">...</td>
         <td data-th-text="${borne.operateur}">...</td>
@@ -45,7 +66,7 @@
 
     $( document ).ready(function() {
     let options = {
-        numberPerPage:2,
+        numberPerPage:5,
         goBar:true,
         pageCounter:true,
     };
@@ -57,4 +78,5 @@
      });
 /*]]>*/
 </script>
+</body>
 </html>
