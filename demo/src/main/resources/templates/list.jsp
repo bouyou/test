@@ -19,7 +19,7 @@
 
 <body>
 
-<h1>>List</h1>
+<h1>List</h1>
 
 <div class="input-group">
     <label for="searchBox">Filtre</label>
