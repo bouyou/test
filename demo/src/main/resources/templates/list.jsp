@@ -13,6 +13,8 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="/css/paginate.css"/>
+      <link rel="stylesheet" href="/css/ligne.css"/>
 </head>
 
 <body>
@@ -20,20 +22,42 @@
 <p>List</p>
 
 </body>
-<table>
+<div class="input-group">
+    <label for="searchBox">Filtre</label>
+    <input type="search" id="searchBox" placeholder="Filtre...">
+</div>
+<table class="map table hover">
     <tr data-th-each="borne : ${list}">
+        <td data-th-text="${borne.operateur}">...</td>
         <td data-th-text="${borne.amenageur}">...</td>
-
+        <td data-th-text="${borne.operateur}">...</td>
+        <td data-th-text="${borne.codeinsee}">...</td>
+        <td data-th-text="${borne.typeprise}">...</td>
+        <td data-th-text="${borne.accesrecharge}">...</td>
     </tr>
 </table>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="/js/paginate.min.js"></script>
 <script th:inline="javascript">
 /*<![CDATA[*/
 
     $( document ).ready(function() {
-    	var data = /*[[${list}]]*/ 'default';
+
+    let options = {
+        numberPerPage:2,
+        goBar:true,
+        pageCounter:true,
+    };
+
+    let filterOptions = {
+        el:'#searchBox'
+    };
+
+    paginate.init('.map',options,filterOptions);
+
+
+     });
 /*]]>*/
 </script>
 </html>
