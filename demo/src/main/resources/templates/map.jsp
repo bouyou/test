@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+${list}
 <p>Map</p>
 
 <div id="map" style="width: auto; height: 600px;"></div>

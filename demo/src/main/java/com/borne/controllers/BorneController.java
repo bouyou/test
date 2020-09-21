@@ -41,31 +41,10 @@ public class BorneController {
 
     @ModelAttribute
     @GetMapping("/list")
-    public String list(Model model) throws JsonProcessingException {
+    public String list(Model model)  {
 
-        ObjectMapper mapper = new ObjectMapper();
-        String list = mapper.writeValueAsString(this.borneRepository.findAll());
-
-
-
-
-        model.addAttribute("list", list);
-
-
-
-
-
-
-
-
+        model.addAttribute("list", this.borneRepository.findAll());
         return "list";
     }
-
-
-
-
-
-
-
 }
 
