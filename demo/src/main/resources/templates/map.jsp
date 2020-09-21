@@ -56,7 +56,6 @@
             marker.addTo(mymap);
 
     		for(let i = 0; i < dataParsed.length; i++){
-    		console.log(dataParsed[i]);
                 var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
                 marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
                 marker.addTo(mymap);
