@@ -13,9 +13,9 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="/css/paginate.css"/>
-      <link rel="stylesheet" href="/css/ligne.css"/>
-       <link rel="stylesheet" href="/css/style.css"/>
+     <link rel="stylesheet" href="/css/paginate.css"/>
+     <link rel="stylesheet" href="/css/ligne.css"/>
+     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
 <body>
@@ -23,15 +23,15 @@
 <h1>Liste des bornes</h1>
 
 <div class="input-group">
-    <label for="searchBox">Filtre</label>
+    <label for="searchBox" class="filter">Rechercher</label>
     <input type="search" id="searchBox" placeholder="...">
 </div>
-<table class="map table hover table-dark">
+<table class="map table hover table-dark tablePosition">
 <thead>
     <tr>
       <th scope="col">Action</th>
       <th scope="col">Operateur</th>
-      <th scope="col">Amenageur</th>
+      <th scope="col">Aménageur</th>
       <th scope="col">Code Insee</th>
       <th scope="col">Type prise</th>
       <th scope="col">Acces recharge</th>
