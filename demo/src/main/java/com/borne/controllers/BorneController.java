@@ -7,29 +7,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Optional;
 
 @RestController
 public class BorneController {
 
     private final BorneRepository borneRepository;
-
     BorneController(BorneRepository borneRepository) {
         this.borneRepository = borneRepository;
     }
 
-
     @GetMapping("/")
-    public String index() {
-        return "hello";
+    public String home() {
+        return "home";
     }
-
 
     @ModelAttribute
     @GetMapping("/map")
     public String map(Model model) throws JsonProcessingException {
-
         ObjectMapper mapper = new ObjectMapper();
         String list = mapper.writeValueAsString(this.borneRepository.findAll());
         model.addAttribute("list", list);

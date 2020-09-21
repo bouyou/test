@@ -31,8 +31,6 @@
    crossorigin=""></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-
 <script th:inline="javascript">
 /*<![CDATA[*/
 
@@ -51,10 +49,8 @@
 
 
     	var data = /*[[${list}]]*/ 'default';
-           // console.log(data);
-            //console.log(JSON.parse(data));
-            var dataParsed = JSON.parse(data);
 
+            var dataParsed = JSON.parse(data);
             var marker = L.marker([50.633 , 3.066])
             marker.bindTooltip("my tooltip text").openTooltip();
             marker.addTo(mymap);
@@ -64,12 +60,7 @@
                 var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
                 marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
                 marker.addTo(mymap);
-
-                    console.log(' x ' + dataParsed[i].xlongitude.slice(0, 6) + ' y '  + dataParsed[i].ylatitude.slice(0, 6));
-
             }
-
-           console.log( "ready!" );
         });
 
 /*]]>*/

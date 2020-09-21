@@ -34,15 +34,11 @@
 <script th:inline="javascript">
 /*<![CDATA[*/
 
-
     $( document ).ready(function() {
 
         var data = /*[[${borne}]]*/ 'default';
-        console.log(data);
 
         var borne = JSON.parse(data);
-        console.log(data);
-
         var mymap = L.map('map').setView([borne.ylatitude, borne.xlongitude], 13);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -53,18 +49,11 @@
             accessToken: 'pk.eyJ1IjoiZmFiYWFkYWRhZCIsImEiOiJja2ZhMjR2ZG4wcncxMnVvODQ3d3N1bnRnIn0.21lhMogKZobEJhyKD5tRJQ'
         }).addTo(mymap);
 
-            // console.log(data);
-            //console.log(JSON.parse(data));
-
-
             var marker = L.marker([borne.ylatitude, borne.xlongitude]);
             marker.bindTooltip(borne.amenageur).openTooltip();
             marker.addTo(mymap);
         });
 
-
 /*]]>*/
 </script>
-
-
 </html>
