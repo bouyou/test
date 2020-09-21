@@ -17,10 +17,7 @@ public class BorneController {
         this.borneRepository = borneRepository;
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
+
 
     @ModelAttribute
     @GetMapping("/map")
