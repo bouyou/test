@@ -20,12 +20,9 @@
 </head>
 
 <body>
-<p>Map</p>
+<h1>Map</h1>
 
 <div id="map" style="width: auto; height: 600px;"></div>
-
-</body>
-
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
@@ -33,7 +30,6 @@
 
 <script th:inline="javascript">
 /*<![CDATA[*/
-
 
     $( document ).ready(function() {
 
@@ -56,7 +52,6 @@
             marker.addTo(mymap);
 
     		for(let i = 0; i < dataParsed.length; i++){
-    		console.log(dataParsed[i]);
                 var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
                 marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
                 marker.addTo(mymap);
@@ -65,6 +60,5 @@
 
 /*]]>*/
 </script>
-
-
+</body>
 </html>

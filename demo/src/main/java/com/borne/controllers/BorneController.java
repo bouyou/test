@@ -17,10 +17,7 @@ public class BorneController {
         this.borneRepository = borneRepository;
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
+
 
     @ModelAttribute
     @GetMapping("/map")
@@ -34,7 +31,6 @@ public class BorneController {
     @ModelAttribute
     @GetMapping("/list")
     public String list(Model model)  {
-
         model.addAttribute("list", this.borneRepository.findAll());
         return "list";
     }
@@ -43,7 +39,6 @@ public class BorneController {
     @GetMapping("/show")
     public String show(Integer id, Model model) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-
         Optional<Borne> borne = this.borneRepository.findById(id);
         String borneJson = mapper.writeValueAsString(borne.get());
         model.addAttribute("borne", borneJson);

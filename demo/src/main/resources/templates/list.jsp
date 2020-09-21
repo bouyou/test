@@ -15,20 +15,36 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="/css/paginate.css"/>
       <link rel="stylesheet" href="/css/ligne.css"/>
+       <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
 <body>
 
-<p>List</p>
-</body>
+<h1>Liste des bornes</h1>
+
 <div class="input-group">
     <label for="searchBox">Filtre</label>
-    <input type="search" id="searchBox" placeholder="Filtre...">
+    <input type="search" id="searchBox" placeholder="...">
 </div>
-<table class="map table hover">
-    <tr data-th-each="borne : ${list}">
-
-        <td><span><a th:href="@{/show(id=${borne.id})}">Show</span></td>
+<table class="map table hover table-dark">
+<thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Operateur</th>
+      <th scope="col">Amenageur</th>
+      <th scope="col">Code Insee</th>
+      <th scope="col">Type prise</th>
+      <th scope="col">Acces recharge</th>
+    </tr>
+  </thead>
+    <tr scope="row" data-th-each="borne : ${list}">
+        <td><span><a th:href="@{/show(id=${borne.id})}">
+                <svg width="1em" height="1.0625em" viewBox="0 0 16 17" class="bi bi-compass" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                <path d="M6.94 7.44l4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
+                </svg>
+            </span>
+        </td>
         <td data-th-text="${borne.operateur}"></td>
         <td data-th-text="${borne.amenageur}">...</td>
         <td data-th-text="${borne.operateur}">...</td>
@@ -45,7 +61,7 @@
 
     $( document ).ready(function() {
     let options = {
-        numberPerPage:2,
+        numberPerPage:30,
         goBar:true,
         pageCounter:true,
     };
@@ -57,4 +73,5 @@
      });
 /*]]>*/
 </script>
+</body>
 </html>
