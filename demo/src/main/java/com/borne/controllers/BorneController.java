@@ -23,7 +23,7 @@ public class BorneController {
     @GetMapping("/map")
     public String map(Model model) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        String list = mapper.writeValueAsString(this.borneRepository.findAll());
+        String list = mapper.writeValueAsString(this.borneRepository.findAll().subList(0, 2000));
         model.addAttribute("list", list);
         return "map";
     }

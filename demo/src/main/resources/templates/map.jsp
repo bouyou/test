@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css"/>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -18,7 +19,7 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 </head>
 
-<body>
+<body class="bodyMap">
 <h1>Map</h1>
 <div id="map" style="width: auto; height: 600px;"></div>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -66,33 +67,21 @@
       });
     }
 
-
-
-
-
     var data = /*[[${list}]]*/ 'default';
 
         var dataParsed = JSON.parse(data);
 
-
         for(let i = 0; i < dataParsed.length; i++){
+
             var marker = L.marker([dataParsed[i].ylatitude, dataParsed[i].xlongitude]);
             marker.bindTooltip(dataParsed[i].amenageur).openTooltip();
             marker.addTo(mymap);
 
         }
 
-
-
         function locateUser() {
             this.map.locate({setView : true});
         }
-
-        $('#actions').find('a').on('click', function() {
-           locateUser();
-        });
-
-
     });
 
 /*]]>*/
